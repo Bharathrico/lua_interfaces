@@ -3,7 +3,7 @@ local width, height = 0,0
 
 function love.load()
     x,y,r = 400,400,100
-    width, height = 1470, 956
+    width, height = love.window.getDesktopDimensions()
     print(width, height)
     local mode_flags = {
         fullscreen = true,
@@ -21,7 +21,6 @@ function staticGraphic()
     love.graphics.setColor(255, 255, 255)
     love.graphics.rectangle("fill",width/2,height/2,300,1)
 end
-
 
 function love.draw()
     love.graphics.setDefaultFilter("nearest", "nearest", 1)
