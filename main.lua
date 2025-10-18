@@ -18,8 +18,9 @@ end
 function staticGraphic()
     love.graphics.setColor(255, 255, 255)
     love.graphics.circle("line", width/2,height/2, r)
-    love.graphics.setColor(255, 255, 255)
-    love.graphics.rectangle("fill",width/2,height/2,300,1)
+    love.graphics.rectangle("line",(width/2)-150,(height/2)-150,300,300)
+    -- love.graphics.setColor(255, 255, 255)
+    -- love.graphics.rectangle("fill",width/2,height/2,300,1)
 end
 
 function love.draw()
@@ -31,18 +32,25 @@ function love.draw()
     love.graphics.translate(width/2, height/2)
     love.graphics.rotate(angle)
     love.graphics.translate(-(width/2), -(height/2))
-    love.graphics.rectangle("fill",width/2,height/2,300,1)
+    love.graphics.setColor(0, 255, 255)
+    love.graphics.push()
+        love.graphics.translate(-150,0)
+        love.graphics.rectangle("fill",width/2,height/2,140,1)
+        love.graphics.circle("fill",(width/2)+150,height/2,10)
+        love.graphics.rectangle("fill",(width/2)+160,height/2,140,1)
+    love.graphics.pop()
 end
 
 function love.update(dt)
     
     local joysticks = love.joystick.getJoysticks()
     if #joysticks>0 then
+        print("yes")
         local xaxis = joysticks[1]:getAxis(1)
         if xaxis>0 then
-            angle = xaxis*math.pi
+            angle = xaxis*math.pi*0.5
         elseif xaxis<0 then
-            angle = xaxis*math.pi
+            angle = xaxis*math.pi*0.5
         else
             angle = 0
         end
