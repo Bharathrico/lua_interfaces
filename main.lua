@@ -36,7 +36,7 @@ function love.draw()
     love.graphics.push()
         love.graphics.translate(-150,0)
         love.graphics.rectangle("fill",width/2,height/2,140,1)
-        love.graphics.circle("fill",(width/2)+150,height/2,10)
+        love.graphics.circle("fill",(width/2)+150,height/2,4)
         love.graphics.rectangle("fill",(width/2)+160,height/2,140,1)
     love.graphics.pop()
 end
@@ -45,14 +45,8 @@ function love.update(dt)
     
     local joysticks = love.joystick.getJoysticks()
     if #joysticks>0 then
-        print("yes")
         local xaxis = joysticks[1]:getAxis(1)
-        if xaxis>0 then
-            angle = xaxis*math.pi*0.5
-        elseif xaxis<0 then
-            angle = xaxis*math.pi*0.5
-        else
-            angle = 0
-        end
+        angle= -(xaxis*math.pi*0.3)
+        print(angle)
     end
 end    
