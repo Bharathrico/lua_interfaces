@@ -1,0 +1,13 @@
+local moonshine = require 'moonshine'
+
+function love.load()
+    effect = moonshine(moonshine.effects.glow).chain(moonshine.effects.crt)
+    effect.glow.strength = 10
+end
+
+function love.draw()
+    love.graphics.setColor(252/255,195/255,90/255)
+    effect(function()
+      love.graphics.rectangle("fill", 300,200, 200,200)
+    end)
+end
